@@ -137,15 +137,11 @@ describe("Auth & URL Helpers", () => {
       delete process.env.ANTHROPIC_API_KEY;
       initConfig({});
 
-      await expect(getProviderHeaders("anthropic")).rejects.toThrow(
-        /No API key configured/,
-      );
+      await expect(getProviderHeaders("anthropic")).rejects.toThrow(/No API key configured/);
     });
 
     it("should throw for unknown providers", async () => {
-      await expect(getProviderHeaders("fake-provider")).rejects.toThrow(
-        /Unknown provider/,
-      );
+      await expect(getProviderHeaders("fake-provider")).rejects.toThrow(/Unknown provider/);
     });
   });
 
@@ -191,9 +187,7 @@ describe("Auth & URL Helpers", () => {
       delete process.env.OPENAI_API_KEY;
       initConfig({});
 
-      await expect(getOpenAICompatibleConfig("openai")).rejects.toThrow(
-        /No API key configured/,
-      );
+      await expect(getOpenAICompatibleConfig("openai")).rejects.toThrow(/No API key configured/);
     });
   });
 });

@@ -22,9 +22,7 @@ export function validateKeyFormat(providerId: ProviderId, key: string): Validati
 
   // Check prefix if defined
   if (provider.keyPrefix) {
-    const prefixes = Array.isArray(provider.keyPrefix)
-      ? provider.keyPrefix
-      : [provider.keyPrefix];
+    const prefixes = Array.isArray(provider.keyPrefix) ? provider.keyPrefix : [provider.keyPrefix];
 
     const hasValidPrefix = prefixes.some((p) => key.startsWith(p));
     if (!hasValidPrefix) {
@@ -47,10 +45,7 @@ export function validateKeyFormat(providerId: ProviderId, key: string): Validati
  * Validate a key by making a lightweight API call.
  * This hits a read-only endpoint (like listing models) to verify the key works.
  */
-export async function validateKey(
-  providerId: ProviderId,
-  key: string,
-): Promise<ValidationResult> {
+export async function validateKey(providerId: ProviderId, key: string): Promise<ValidationResult> {
   // First, format check
   const formatResult = validateKeyFormat(providerId, key);
   if (!formatResult.valid) return formatResult;
@@ -103,7 +98,10 @@ export async function validateKey(
 
     if (response.status === 429) {
       // Rate limited but key is valid
-      return { valid: true, meta: { warning: "Rate limited — key is valid but currently throttled" } };
+      return {
+        valid: true,
+        meta: { warning: "Rate limited — key is valid but currently throttled" },
+      };
     }
 
     return {

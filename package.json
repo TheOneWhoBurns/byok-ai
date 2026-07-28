@@ -1,6 +1,6 @@
 {
-  "name": "byok-ai",
-  "version": "0.1.0",
+  "name": "byok-llm",
+  "version": "1.0.0",
   "description": "Bring Your Own Key — unified API key management for AI-powered apps",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -21,8 +21,11 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "lint": "eslint src/ test/ && tsc --noEmit",
+    "lint:fix": "eslint src/ test/ --fix",
+    "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "keywords": [
     "byok",
@@ -40,9 +43,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^25.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
     "tsup": "^8.0.0",
     "typescript": "^5.4.0",
+    "typescript-eslint": "^8.57.2",
     "vitest": "^2.0.0"
   },
   "engines": {

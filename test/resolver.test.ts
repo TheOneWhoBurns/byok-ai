@@ -9,7 +9,6 @@ import {
   getConfiguredProviders,
   getConfig,
 } from "../src/config/resolver.js";
-import { storeKey, clearAllKeys } from "../src/storage/file.js";
 
 describe("Key Resolver", () => {
   const originalEnv = { ...process.env };

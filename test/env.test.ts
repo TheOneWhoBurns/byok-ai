@@ -1,10 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import {
-  hasEnvKey,
-  getEnvKey,
-  getEnvVarName,
-  generateEnvTemplate,
-} from "../src/storage/env.js";
+import { describe, it, expect, afterEach } from "vitest";
+import { hasEnvKey, getEnvKey, getEnvVarName, generateEnvTemplate } from "../src/storage/env.js";
 
 describe("Environment Variable Helpers", () => {
   const originalEnv = { ...process.env };

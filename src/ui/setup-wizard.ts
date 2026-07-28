@@ -4,7 +4,7 @@
 // Uses raw Node.js readline — zero dependencies.
 
 import { createInterface } from "node:readline";
-import type { ProviderId, WizardOptions } from "../types.js";
+import type { WizardOptions } from "../types.js";
 import { getProvider, listProviders } from "../providers/registry.js";
 import { resolveKey } from "../config/resolver.js";
 import { storeKey } from "../storage/file.js";
@@ -42,11 +42,7 @@ function maskKey(key: string): string {
  * Keys are stored in ~/.config/byok-ai/keys.json with 0600 permissions.
  */
 export async function setupWizard(options: WizardOptions = {}): Promise<void> {
-  const {
-    appName = "this app",
-    skipConfigured = true,
-    required = [],
-  } = options;
+  const { appName = "this app", skipConfigured = true, required = [] } = options;
 
   const providerIds = options.providers || listProviders().map((p) => p.id);
 
@@ -75,7 +71,7 @@ export async function setupWizard(options: WizardOptions = {}): Promise<void> {
       if (existing && skipConfigured) {
         console.log(
           `  ${c.green}✓${c.reset} ${c.bold}${provider.name}${c.reset}` +
-          `  ${c.dim}(configured via ${existing.source})${c.reset}`,
+            `  ${c.dim}(configured via ${existing.source})${c.reset}`,
         );
         configured.push(id);
         continue;
@@ -84,7 +80,7 @@ export async function setupWizard(options: WizardOptions = {}): Promise<void> {
       if (existing) {
         console.log(
           `  ${c.green}✓${c.reset} ${c.bold}${provider.name}${c.reset}` +
-          `  ${c.dim}(${maskKey(existing.key)} via ${existing.source})${c.reset}`,
+            `  ${c.dim}(${maskKey(existing.key)} via ${existing.source})${c.reset}`,
         );
       }
 
@@ -92,7 +88,7 @@ export async function setupWizard(options: WizardOptions = {}): Promise<void> {
       console.log();
       console.log(
         `  ${c.bold}${provider.name}${c.reset}` +
-        `  ${c.dim}— Get a key at: ${provider.docsUrl}${c.reset}`,
+          `  ${c.dim}— Get a key at: ${provider.docsUrl}${c.reset}`,
       );
 
       const input = await ask(rl, `  ${c.cyan}API Key${c.reset} (or Enter to skip): `);
@@ -147,14 +143,12 @@ export async function setupWizard(options: WizardOptions = {}): Promise<void> {
     if (configured.length > 0) {
       console.log(
         `  ${c.green}✓${c.reset} ${configured.length} provider(s) configured: ` +
-        `${c.bold}${configured.join(", ")}${c.reset}`,
+          `${c.bold}${configured.join(", ")}${c.reset}`,
       );
     }
 
     if (skipped.length > 0) {
-      console.log(
-        `  ${c.dim}○ ${skipped.length} skipped: ${skipped.join(", ")}${c.reset}`,
-      );
+      console.log(`  ${c.dim}○ ${skipped.length} skipped: ${skipped.join(", ")}${c.reset}`);
     }
 
     // Check required providers
@@ -163,11 +157,9 @@ export async function setupWizard(options: WizardOptions = {}): Promise<void> {
       console.log();
       console.log(
         `  ${c.yellow}⚠ Required providers not configured: ` +
-        `${c.bold}${missingRequired.join(", ")}${c.reset}`,
+          `${c.bold}${missingRequired.join(", ")}${c.reset}`,
       );
-      console.log(
-        `  ${c.dim}${appName} may not work without these.${c.reset}`,
-      );
+      console.log(`  ${c.dim}${appName} may not work without these.${c.reset}`);
     }
 
     console.log();

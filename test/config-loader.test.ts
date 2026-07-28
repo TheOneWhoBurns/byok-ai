@@ -2,7 +2,12 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { loadConfig, resolveValue, getUserConfigPath, getKeysStorePath } from "../src/config/loader.js";
+import {
+  loadConfig,
+  resolveValue,
+  getUserConfigPath,
+  getKeysStorePath,
+} from "../src/config/loader.js";
 
 describe("Config Loader", () => {
   const testDir = join(tmpdir(), "byok-ai-test-config-" + Date.now());

@@ -98,11 +98,7 @@ function readPackageJsonConfig(): ByokConfig | null {
 /**
  * Search for project-level config files.
  */
-const PROJECT_CONFIG_NAMES = [
-  ".byokrc.json",
-  ".byokrc",
-  "byok.config.json",
-];
+const PROJECT_CONFIG_NAMES = [".byokrc.json", ".byokrc", "byok.config.json"];
 
 function findProjectConfig(): ByokConfig | null {
   for (const name of PROJECT_CONFIG_NAMES) {

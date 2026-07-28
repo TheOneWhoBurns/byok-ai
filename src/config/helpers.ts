@@ -63,9 +63,7 @@ export function getEffectiveBaseUrl(
 /**
  * Get auth headers for a provider (resolves key automatically).
  */
-export async function getProviderHeaders(
-  providerId: ProviderId,
-): Promise<Record<string, string>> {
+export async function getProviderHeaders(providerId: ProviderId): Promise<Record<string, string>> {
   const provider = getProvider(providerId);
   if (!provider) throw new Error(`Unknown provider: ${providerId}`);
 
@@ -73,7 +71,7 @@ export async function getProviderHeaders(
   if (!resolved) {
     throw new Error(
       `No API key configured for ${provider.name}. ` +
-      `Set ${provider.envKeys[0]} or run the setup wizard.`,
+        `Set ${provider.envKeys[0]} or run the setup wizard.`,
     );
   }
 
@@ -106,7 +104,7 @@ export async function getOpenAICompatibleConfig(
   if (!resolved) {
     throw new Error(
       `No API key configured for ${provider.name}. ` +
-      `Set ${provider.envKeys[0]} or run the setup wizard.`,
+        `Set ${provider.envKeys[0]} or run the setup wizard.`,
     );
   }
 

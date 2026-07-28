@@ -5,7 +5,6 @@
 import type {
   ByokConfig,
   ByokOptions,
-  KeySource,
   ProviderId,
   ResolvedKey,
   ResolvedProvider,

@@ -85,7 +85,16 @@ describe("Key Format Validation", () => {
 
   describe("Edge cases", () => {
     it("should reject empty strings for all providers", () => {
-      const providers = ["anthropic", "openai", "openrouter", "groq", "google", "xai", "mistral", "deepseek"];
+      const providers = [
+        "anthropic",
+        "openai",
+        "openrouter",
+        "groq",
+        "google",
+        "xai",
+        "mistral",
+        "deepseek",
+      ];
       for (const provider of providers) {
         expect(validateKeyFormat(provider, "").valid).toBe(false);
       }

@@ -7,7 +7,6 @@ import {
   resolveKey,
   validateKeyFormat,
   getEnvVarName,
-  hasEnvKey,
   getProviderBaseUrl,
   initConfig,
   DEFAULT_FALLBACK_ORDER,

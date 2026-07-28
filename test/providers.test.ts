@@ -6,7 +6,6 @@ import {
   registerProvider,
   DEFAULT_FALLBACK_ORDER,
 } from "../src/providers/registry.js";
-import type { ProviderDefinition } from "../src/types.js";
 
 describe("Provider Registry", () => {
   describe("Built-in providers", () => {
